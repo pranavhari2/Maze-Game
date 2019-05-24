@@ -46,6 +46,10 @@ class Maze
         int getExitY();
         void setSpawn(int, int);
         void setExit(int, int);
+        void movePlayer(int, int);
+        void DeletePosition(int, int);
+        void UserSolver(Player, string);
+
 
 
 
