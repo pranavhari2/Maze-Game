@@ -85,3 +85,47 @@ void Maze::setExit(int _exitX, int _exitY)
     maze[_exitX][_exitY] = 'E';
     return;
 }
+
+void Maze::movePlayer(int x, int y)
+{
+    maze[y][x] = 'P';
+    return;
+}
+
+void Maze::DeletePosition(int x, int y)
+{
+    maze[y][x] = blnk;
+    return;
+}
+
+void Maze::UserSolver(Player player, string dir)
+{
+    if (dir == "up")
+    {
+        movePlayer(player.getxLocation(), player.getyLocation()+1);
+        DeletePosition(player.getxLocation(), player.getyLocation());
+    }
+
+    else if (dir == "down")
+    {
+        movePlayer(player.getxLocation(), player.getyLocation()-1);
+        DeletePosition(player.getxLocation(), player.getyLocation());
+    }
+
+    else if (dir == "left")
+    {
+        movePlayer(player.getxLocation()-1, player.getyLocation());
+        DeletePosition(player.getxLocation(), player.getyLocation());
+    }
+
+    else if (dir == "right")
+    {
+        movePlayer(player.getxLocation()+1, player.getyLocation());
+        DeletePosition(player.getxLocation(), player.getyLocation());
+    }
+
+    else
+    {
+        return;
+    }
+}
