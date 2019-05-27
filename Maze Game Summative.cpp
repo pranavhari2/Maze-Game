@@ -21,7 +21,7 @@ int main()
 {
     // Monster Creation
     Maze maze;
-    //Player player("Pranav", 100, 100);
+    Being player("Pranav", 100, 100);
     int location;
     int _move;
     Monster monster("Monstah", 100, 100);
@@ -32,7 +32,15 @@ int main()
 
     //========================================
 
-    maze.displayMaze();
+    for (int i=0; i<14; i++)
+    {
+        for (int j = 0; j<14; j++)
+        {
+            maze.maze[j][i] = 'P';
+            maze.displayMaze();
+            maze.maze[j][i] = blnk;
+        }
+    }
 
     //===========================================
 
