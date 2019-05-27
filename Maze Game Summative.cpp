@@ -1,53 +1,78 @@
 #include <conio.h>
 #include <iostream>
+#include <windows.h>
 #include "Maze.h"
 #include "Being.h"
 #include "Monster.h"
 #include "Player.h"
-//#include "Link.h"
-//#include "Stack.h"
-using namespace std;
-
-
-
-#include <iostream>
-#include <cstdlib>
-#include <cstdio>
-#include <windows.h>
+#include "Link.h"
+#include "Stack.h"
 using namespace std;
 
 
 int main()
 {
-    // Monster Creation
     Maze maze;
-    Being player("Pranav", 100, 100);
-    int location;
-    int _move;
+    Player player("Pranav", 100, 100);
     Monster monster("Monstah", 100, 100);
-    //
 
-    maze.setSpawn(1,1);
+    maze.setLocation(1,1);
     maze.setExit(13,13);
+
+    player.setxLocation(5);
+    player.setyLocation(5);
+
+    char key;
+    int asciival;
+
+    cout << "Press a key....  ";
+
+    while(1)
+    {
+        key = getch();
+        asciival = key;
+
+        if (asciival == 119)
+        {
+            maze[]
+        }
+
+        else if (asciival == 100)
+        {
+
+        }
+
+        else if (asciival == 115)
+        {
+
+        }
+
+        else if (asciival == 97)
+        {
+
+        }
+
+        cout << asciival;
+
+
+    }
+
+
+
+
+    //maze.displayMaze();
+
+
+
 
     //========================================
 
-    for (int i=0; i<14; i++)
-    {
-        for (int j = 0; j<14; j++)
-        {
-            maze.maze[j][i] = 'P';
-            maze.displayMaze();
-            maze.maze[j][i] = blnk;
-        }
-    }
 
     //===========================================
 
     // User Solver
 
 
-dd
+
 
 }
-
