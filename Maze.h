@@ -2,7 +2,6 @@
 #define MAZE_H
 #include <iostream>
 #include <string>
-#include "Being.h"
 using namespace std;
 
 char const sdwl = 196;
@@ -14,6 +13,7 @@ char const crn3 = 192;
 char const crn4 = 217;
 char const midd = 194;
 char const sdmd = 195;
+
 
 
 
@@ -41,15 +41,15 @@ class Maze
 
         Maze();
         virtual ~Maze();
-        void displayMaze(Being);
+        void displayMaze();
         int getParticularMazeLocation(int ,int);
         int getSpawnX();
         int getExitX();
         int getSpawnY();
         int getExitY();
-        void setSpawn(int, int);
+        void setLocation(int, int);
         void setExit(int, int);
-        void UserSolver(string, int, int);
+        void MovePlayer(string);
 
 
 
