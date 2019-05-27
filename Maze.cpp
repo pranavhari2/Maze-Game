@@ -1,5 +1,4 @@
 #include "Maze.h"
-#include "Player.h"
 #include <iostream>
 #include <windows.h>
 using namespace std;
@@ -76,9 +75,9 @@ int Maze::getExitY()
     return exitY;
 }
 
-void Maze::setSpawn(int _spawnX, int _spawnY)
+void Maze::setLocation(int _x, int _y)
 {
-    maze[_spawnX][_spawnY] = 'P';
+    maze[_x][_y] = 'P';
     return;
 }
 void Maze::setExit(int _exitX, int _exitY)
@@ -88,34 +87,3 @@ void Maze::setExit(int _exitX, int _exitY)
 }
 
 
-void Maze::UserSolver(string dir, int x, int y)
-{
-    if (dir == "up")
-    {
-        maze[y-1][x] = 'P';
-        maze[y][x] = blnk;
-    }
-
-    else if (dir == "down")
-    {
-        maze[y+1][x] = 'P';
-        maze[y][x] = blnk;
-    }
-
-    else if (dir == "left")
-    {
-        maze[y][x-1] = 'P';
-        maze[y][x] = blnk;
-    }
-
-    else if (dir == "right")
-    {
-        maze[y][x+1] = 'P';
-        maze[y][x] = blnk;
-    }
-
-    else
-    {
-        return;
-    }
-}
