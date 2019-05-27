@@ -1,5 +1,5 @@
-#include "Being.h"
 #include "Maze.h"
+#include "Being.h"
 #include <iostream>
 using namespace std;
 

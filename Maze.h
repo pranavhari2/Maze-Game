@@ -1,6 +1,8 @@
 #ifndef MAZE_H
 #define MAZE_H
+#include <iostream>
 #include <string>
+#include "Being.h"
 using namespace std;
 
 char const sdwl = 196;
@@ -17,6 +19,7 @@ char const sdmd = 195;
 
 class Maze
 {
+
     public:
         char maze[15][15] =
     {       {crn1, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, crn2}, //1//
@@ -34,11 +37,11 @@ class Maze
             {wall, sdwl, sdwl, sdwl, crn4, blnk, blnk, blnk, blnk, blnk, blnk, wall, blnk, blnk, wall},  //13
             {wall, sdwl, sdwl, blnk, blnk, blnk, crn1, sdwl, sdwl, sdwl, blnk, blnk, blnk, blnk, wall},  //14
             {crn3, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, crn4},  //15
-            };
+    };
 
         Maze();
         virtual ~Maze();
-        void displayMaze();
+        void displayMaze(Being);
         int getParticularMazeLocation(int ,int);
         int getSpawnX();
         int getExitX();
@@ -46,9 +49,7 @@ class Maze
         int getExitY();
         void setSpawn(int, int);
         void setExit(int, int);
-        void movePlayer(int, int);
-        void DeletePosition(int, int);
-        void UserSolver(Player, string);
+        void UserSolver(string, int, int);
 
 
 

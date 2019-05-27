@@ -1,4 +1,5 @@
 #include "Maze.h"
+#include "Player.h"
 #include <iostream>
 #include <windows.h>
 using namespace std;
@@ -86,42 +87,31 @@ void Maze::setExit(int _exitX, int _exitY)
     return;
 }
 
-void Maze::movePlayer(int x, int y)
-{
-    maze[y][x] = 'P';
-    return;
-}
 
-void Maze::DeletePosition(int x, int y)
-{
-    maze[y][x] = blnk;
-    return;
-}
-
-void Maze::UserSolver(Player player, string dir)
+void Maze::UserSolver(string dir, int x, int y)
 {
     if (dir == "up")
     {
-        movePlayer(player.getxLocation(), player.getyLocation()+1);
-        DeletePosition(player.getxLocation(), player.getyLocation());
+        maze[y-1][x] = 'P';
+        maze[y][x] = blnk;
     }
 
     else if (dir == "down")
     {
-        movePlayer(player.getxLocation(), player.getyLocation()-1);
-        DeletePosition(player.getxLocation(), player.getyLocation());
+        maze[y+1][x] = 'P';
+        maze[y][x] = blnk;
     }
 
     else if (dir == "left")
     {
-        movePlayer(player.getxLocation()-1, player.getyLocation());
-        DeletePosition(player.getxLocation(), player.getyLocation());
+        maze[y][x-1] = 'P';
+        maze[y][x] = blnk;
     }
 
     else if (dir == "right")
     {
-        movePlayer(player.getxLocation()+1, player.getyLocation());
-        DeletePosition(player.getxLocation(), player.getyLocation());
+        maze[y][x+1] = 'P';
+        maze[y][x] = blnk;
     }
 
     else

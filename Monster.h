@@ -9,10 +9,6 @@ class Monster : public Being
         Monster(string, int, int);
         virtual ~Monster();
 
-
-
-
-
     protected:
 
     private:
