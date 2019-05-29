@@ -45,19 +45,18 @@ void Maze::displayMaze()
     return;
 
 }
-/*
-int Maze::getParticularMazeLocation(int yval, int xval)
+int Maze::getParticularMazeLocation(int xval, int yval)
 {
     if (maze[yval][xval] == blnk)
     {
-        return 1;
+        return 0;
     }
     else
     {
-        return 0;
+        return 1;
     }
 }
-*/ //Copy This
+
 int Maze::getSpawnX()
 {
     return spawnX;
