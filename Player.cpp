@@ -13,70 +13,69 @@ Player::~Player()
     //dtor
 }
 
-void Player::movePlayer(string dir)
+int Player::movePlayer(Maze maze, string dir)
 {
     int val;
 
-    if (dir == "up")
+    if (dir == "U")
     {
-        val = maze->getParticularMazeLocation(xLocation, yLocation-1);
+        val = maze.getParticularMazeLocation(xLocation, yLocation-1);
         cout << val;
 
-        if (val == 0)
+        if (val == 1)
         {
-            return;
+            return 0;
         }
 
-        maze->maze[xLocation][yLocation] = blnk;
         yLocation++;
-        maze->maze[xLocation][yLocation] = 'P';
+        return yLocation;
+
     }
 
-    else if (dir == "down")
+    else if (dir == "D")
     {
-        val = maze->getParticularMazeLocation(xLocation, yLocation+1);
+        val = maze.getParticularMazeLocation(xLocation, yLocation+1);
         cout << val;
 
         if (val == 0)
         {
-            return;
+            return 0;
         }
 
-        maze->maze[xLocation][yLocation] = blnk;
-        yLocation--;
-        maze->maze[xLocation][yLocation] = 'P';
+         yLocation--;
+         return yLocation;
     }
 
-    else if (dir == "left")
+    else if (dir == "L")
     {
-        val = maze->getParticularMazeLocation(xLocation-1, yLocation);
+        val = maze.getParticularMazeLocation(xLocation-1, yLocation);
         cout << val;
 
         if (val == 0)
         {
-            return;
+            return 0;
         }
 
-        maze->maze[xLocation][yLocation] = blnk;
-        xLocation--;
-        maze->maze[xLocation][yLocation] = 'P';
+
+         xLocation--;
+         return xLocation;
     }
 
-    else
+    else if (dir == "R")
     {
-        val = maze->getParticularMazeLocation(xLocation+1, yLocation);
+        val = maze.getParticularMazeLocation(xLocation+1, yLocation);
         cout << val;
 
         if (val == 0)
         {
-            return;
+            return 0;
         }
 
-        maze->maze[xLocation][yLocation] = blnk;
-        xLocation--;
-        maze->maze[xLocation][yLocation] = 'P';
+         xLocation++;
+         return xLocation;
 
     }
 
-    return;
+    return 0;
 }
+
