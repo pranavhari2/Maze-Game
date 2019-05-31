@@ -27,15 +27,18 @@ class Being
 
 
 
-    protected:
 
-    private:
+    protected:
         string name;
         int health;
         string inventory[10];
         int strength;
         int xLocation;
         int yLocation;
+
+    private:
+
+
 };
 
 #endif // BEING_H

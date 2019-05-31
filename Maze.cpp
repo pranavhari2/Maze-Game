@@ -26,8 +26,7 @@ Maze::~Maze()
 
 void Maze::displayMaze()
 {
-    while(true)
-    {
+    cout <<  "                                      " << endl;
     for (int i = 0; i<15; i++)
         {
             for (int j = 0; j<15; j++)
@@ -41,11 +40,11 @@ void Maze::displayMaze()
         Sleep(50);
         system("CLS");
 
-    }
     return;
 
 }
-int Maze::getParticularMazeLocation(int xval, int yval)
+
+int Maze::getParticularMazeLocation(int yval, int xval)
 {
     if (maze[yval][xval] == blnk)
     {
@@ -74,7 +73,7 @@ int Maze::getExitY()
     return exitY;
 }
 
-void Maze::setLocation(int _x, int _y)
+void Maze::setSpawn(int _x, int _y)
 {
     maze[_x][_y] = 'P';
     return;
@@ -84,5 +83,3 @@ void Maze::setExit(int _exitX, int _exitY)
     maze[_exitX][_exitY] = 'E';
     return;
 }
-
-

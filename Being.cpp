@@ -1,12 +1,7 @@
-#include "Maze.h"
 #include "Being.h"
+#include "Maze.h"
 #include <iostream>
 using namespace std;
-
-Being::Being()
-{
-    //ctor
-}
 
 Being::~Being()
 {
@@ -67,6 +62,7 @@ void Being::setyLocation(int _yLocation)
     yLocation = _yLocation;
     return;
 }
+
 //void Being::Setinventory(string _inventory)
 //{
 
@@ -76,10 +72,12 @@ int Being::Getstrength()
 {
     return strength;
 }
+
 void Being::Setstrength(int _strength)
 {
     strength = _strength;
 }
+
 void Being::displayBeing()
 {
     cout << "Name: " << name << endl;
@@ -87,3 +85,4 @@ void Being::displayBeing()
     //cout << "Items in Inventory: " <<  endl;
     cout << "Strength: " << strength << endl;
 }
+

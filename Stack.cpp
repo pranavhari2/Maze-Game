@@ -3,7 +3,7 @@
 
 Stack::Stack()
 {
-    //ctor
+    top = NULL;
 }
 
 Stack::~Stack()
@@ -44,16 +44,13 @@ int Stack::getSize()
     return size;
 }
 
-void Stack::initStak(Stack* stak)
-{
-   stak->setTop(NULL);
-}
-
 void Stack::displayStack()
 {
     Link* temp = new Link;
     temp = top;
+
     cout << "Stack contents: " << endl;
+
     if (temp == NULL)
     {
         cout << "The stack is empty";
@@ -61,11 +58,10 @@ void Stack::displayStack()
     else
     {
         cout << "\n";
-        while (temp != NULL)
+        while (temp->getNext() != NULL)
         {
-
-        cout << temp->getContents() << endl;
-        temp = temp->getNext();
+            cout << temp->getContents() << endl;
+            temp = temp->getNext();
         }
         return;
     }
@@ -73,18 +69,18 @@ void Stack::displayStack()
 
 }
 
-void Stack::push(Stack* stak, string direction)
+void Stack::push(string direction)
 {
-    Link* _top = stak->getTop();
+    Link* _top = top;
 
-    stak->getSize()+1;
+    size+1;
 
     Link* newlink = new Link;
     newlink->setContents(direction);
 
-    if (stak->getSize() == 1)
+    if (size == 1)
     {
-        stak->setBase(newlink);
+        base = newlink;
         newlink->setNext(_top);
         _top = newlink;
     }
@@ -97,9 +93,9 @@ void Stack::push(Stack* stak, string direction)
     return;
 }
 
-Link* Stack::pop(Stack* stak)
+Link* Stack::pop()
 {
-    Link* _top = stak->getTop();
+    Link* _top = top;
 
    if (_top == NULL)
    {
@@ -108,7 +104,7 @@ Link* Stack::pop(Stack* stak)
    }
    else
    {
-       stak->getSize()-1;
+       size--;
        Link* temp = _top;
        cout << _top->getContents() << " was removed" << endl;
        _top = _top->getNext();
@@ -117,7 +113,7 @@ Link* Stack::pop(Stack* stak)
 
 }
 
-void Stack::peek(Stack* stak, string _contents)
+void Stack::peek(string _contents)
 {
     Link* temp = new Link;
     temp = top;
@@ -138,11 +134,10 @@ void Stack::peek(Stack* stak, string _contents)
     BUT we should push the backtracking move onto the stack first  */
 
 
-void Stack::reloadStack(Stack* stak)
+void Stack::reloadStack()
 {
-    push(stak, "L");
-    push(stak, "D");
-    push(stak, "U");
-    push(stak, "R");
+    push("L");
+    push("D");
+    push("U");
+    push("R");
 }
-

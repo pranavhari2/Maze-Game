@@ -22,6 +22,7 @@ class Maze
 
     public:
         char maze[15][15] =
+
     {       {crn1, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, crn2}, //1//
             {blnk, blnk,  blnk, blnk, sdwl, sdwl, sdwl, crn2, blnk, blnk, blnk, blnk, blnk, blnk, wall}, //2//
             {wall, blnk, sdwl, midd, sdwl, crn2, blnk, wall, blnk, wall, blnk, wall, sdwl, blnk, wall}, //3//
@@ -33,7 +34,7 @@ class Maze
             {wall, blnk, blnk, sdwl, sdwl, sdwl, sdwl, crn2, blnk, blnk, blnk, blnk, blnk, blnk, wall}, //9
             {wall, sdwl, crn2, blnk, blnk, blnk, blnk, wall, blnk, wall, blnk, crn1, sdwl, sdwl, wall}, //10
             {wall, blnk, wall, blnk, wall, blnk, blnk, wall, blnk, wall, blnk, wall, blnk, blnk, wall}, //11
-            {wall, sdwl, crn4, blnk, wall, blnk, blnk, wall, blnk, wall, blnk, wall, blnk, blnk, wall},  //12
+            {wall, sdwl, crn4, blnk, wall, blnk, blnk, crn3, sdwl, crn4, blnk, wall, blnk, blnk, wall},  //12
             {wall, sdwl, sdwl, sdwl, crn4, blnk, blnk, blnk, blnk, blnk, blnk, wall, blnk, blnk, wall},  //13
             {wall, sdwl, sdwl, blnk, blnk, blnk, crn1, sdwl, sdwl, sdwl, blnk, blnk, blnk, blnk, wall},  //14
             {crn3, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, sdwl, crn4},  //15
@@ -47,9 +48,8 @@ class Maze
         int getExitX();
         int getSpawnY();
         int getExitY();
-        void setLocation(int, int);
+        void setSpawn(int, int);
         void setExit(int, int);
-        void MovePlayer(string);
 
 
 

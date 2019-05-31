@@ -10,12 +10,11 @@ class Stack
     public:
         Stack();
         virtual ~Stack();
-        void initStak(Stack*);
         void displayStack();
-        Link* pop(Stack*);
-        void push(Stack* , string);
-        void peek(Stack*, string);
-        void reloadStack(Stack*);
+        Link* pop();
+        void push(string);
+        void peek(string);
+        void reloadStack();
         Link* getTop();
         Link* getBase();
         int getSize();

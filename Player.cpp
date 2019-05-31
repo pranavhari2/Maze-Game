@@ -19,6 +19,7 @@ int Player::movePlayer(Maze maze, string dir)
 
     if (dir == "U")
     {
+        /*
         val = maze.getParticularMazeLocation(xLocation, yLocation-1);
         cout << val;
 
@@ -26,6 +27,7 @@ int Player::movePlayer(Maze maze, string dir)
         {
             return 0;
         }
+        */
 
         yLocation++;
         return yLocation;
@@ -34,6 +36,7 @@ int Player::movePlayer(Maze maze, string dir)
 
     else if (dir == "D")
     {
+        /*
         val = maze.getParticularMazeLocation(xLocation, yLocation+1);
         cout << val;
 
@@ -41,6 +44,7 @@ int Player::movePlayer(Maze maze, string dir)
         {
             return 0;
         }
+        */
 
          yLocation--;
          return yLocation;
@@ -48,6 +52,7 @@ int Player::movePlayer(Maze maze, string dir)
 
     else if (dir == "L")
     {
+        /*
         val = maze.getParticularMazeLocation(xLocation-1, yLocation);
         cout << val;
 
@@ -55,6 +60,7 @@ int Player::movePlayer(Maze maze, string dir)
         {
             return 0;
         }
+        */
 
 
          xLocation--;
@@ -63,6 +69,7 @@ int Player::movePlayer(Maze maze, string dir)
 
     else if (dir == "R")
     {
+        /*
         val = maze.getParticularMazeLocation(xLocation+1, yLocation);
         cout << val;
 
@@ -70,6 +77,7 @@ int Player::movePlayer(Maze maze, string dir)
         {
             return 0;
         }
+        */
 
          xLocation++;
          return xLocation;
