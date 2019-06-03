@@ -134,10 +134,10 @@ void Stack::peek(string _contents)
     BUT we should push the backtracking move onto the stack first  */
 
 
-void Stack::reloadStack()
+void Stack::reloadStack(string dir, string dir2, string dir3, string dir4)
 {
-    push("L");
-    push("D");
-    push("U");
-    push("R");
+    push(dir);
+    push(dir2);
+    push(dir3);
+    push(dir4);
 }
