@@ -11,10 +11,36 @@ using namespace std;
 
 void AutoSolver(Maze, Player, Stack);
 
+
+/*  Push all directions to try onto a stack
+    After each successful move, reload the stack with every move other than the move which would represent backtracking
+    BUT we should push the backtracking move onto the stack first  */
+
 void AutoSolver(Maze maze, Player player, Stack stak)
 {
-    Link* temp = stak.pop();
-    string dir = temp->getContents();
+    int right = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);
+    int left = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()-1);
+    int down = maze.getParticularMazeLocation(player.getyLocation()+1, player.getxLocation());
+    int up  = maze.getParticularMazeLocation(player.getyLocation()-1, player.getxLocation());
+
+    stak.reloadStack("L","D","U","R");
+    Link* move = stak.pop();
+
+    if (right == 0)
+    {
+        player.setxLocation(player.getxLocation()+1);
+        maze.maze[player.getyLocation(), player.getxLocation()];
+    }
+
+
+
+
+
+
+
+    string dir = move->getContents();
+
+    stak.reloadStack(dir,)
 
     cout << "DIRECTION: " << dir << endl;
 
@@ -30,63 +56,11 @@ int main()
     Player player("Pranav", 100, 100);
     Monster monster("Monstah", 100, 100);
 
-    maze.setSpawn(1,1);
+
+    maze.setLocation(1,1);
     maze.setExit(13,13);
 
-    player.setxLocation(4);
-    player.setyLocation(4);
-
-
-
-      player.movePlayer(maze,"R");
-
-    //stak.reloadStack();
-
-    //AutoSolver(maze,player,stak);
-
-
-    //AutoSolver(maze);
-    Sleep(1000);
-
-    /*
-
-    char key;
-    int asciival;
-
-    cout << "Press a key....  ";
-
-    while(1)
-    {
-        key = getch();
-        asciival = key;
-
-        maze.displayMaze();
-
-        if (asciival == 119)
-        {
-            player.movePlayer("up");
-        }
-
-        else if (asciival == 100)
-        {
-            player.movePlayer("down");
-        }
-
-        else if (asciival == 115)
-        {
-            player.movePlayer("left");
-        }
-
-        else if (asciival == 97)
-        {
-            player.movePlayer("right");
-        }
-
-        maze.displayMaze();
-
-    }
-
-    */
+    AutoSolver(maze,player,stak)
 
     maze.displayMaze();
 
