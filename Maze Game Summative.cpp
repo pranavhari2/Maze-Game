@@ -1,3 +1,4 @@
+
 #include <conio.h>
 #include <iostream>
 #include <windows.h>
@@ -10,7 +11,7 @@
 using namespace std;
 
 void AutoSolver(Maze, Player, Stack);
-
+void UserSolver(Maze, Player, int);
 
 /*  Push all directions to try onto a stack
     After each successful move, reload the stack with every move other than the move which would represent backtracking
@@ -32,19 +33,92 @@ void AutoSolver(Maze maze, Player player, Stack stak)
         maze.maze[player.getyLocation(), player.getxLocation()];
     }
 
-
-
-
-
-
-
     string dir = move->getContents();
 
-    stak.reloadStack(dir,)
+    //sstak.reloadStack(dir,)
 
     cout << "DIRECTION: " << dir << endl;
 
     return;
+}
+
+void UserSolver(Maze maze, Player player, int asciival)
+{
+        // Move Left
+        if (asciival == 97)
+        {
+            int val = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()-1);
+
+            if (val == 0)
+            {
+                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                player.setxLocation(player.getxLocation()-1);
+                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+            }
+
+            else
+            {
+                cout << "Invalid Move. " << endl;
+            }
+        }
+
+        // Move Right
+        else if (asciival == 100)
+        {
+            int val = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);
+
+            if (val == 0)
+            {
+                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                player.setxLocation(player.getxLocation()+1);
+                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+            }
+
+            else
+            {
+                cout << "Invalid Move. " << endl;
+            }
+        }
+
+        else if (asciival == 119)
+        {
+            // Move Up
+            int val = maze.getParticularMazeLocation(player.getyLocation()-1, player.getxLocation());
+
+            if (val == 0)
+            {
+                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                player.setyLocation(player.getyLocation()-1);
+                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+            }
+
+            else
+            {
+                cout << "Invalid Move. " << endl;
+            }
+        }
+
+        // Move Down
+        else if (asciival == 115)
+        {
+           int val = maze.getParticularMazeLocation(player.getyLocation()+1, player.getxLocation());
+
+            if (val == 0)
+            {
+                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                player.setyLocation(player.getyLocation()+1);
+                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+            }
+
+            else
+            {
+                cout << "Invalid Move. " << endl;
+            }
+        }
+
+
+        return;
+
 }
 
 
@@ -53,26 +127,37 @@ int main()
 {
     Maze maze;
     Stack stak;
+    char key;
+    int asciival;
+
     Player player("Pranav", 100, 100);
     Monster monster("Monstah", 100, 100);
 
-
-    maze.setLocation(1,1);
+    maze.setPlayerLocation(1,1);                // Sets the player to the location in the maze
     maze.setExit(13,13);
+    maze.setMonsterLocation(4,4);
 
-    AutoSolver(maze,player,stak)
+    player.setxLocation(1);
+    player.setyLocation(1);
 
-    maze.displayMaze();
+    while(1)
+    {
+        if (key = getch())
+        {
+            asciival = key;
+            UserSolver(maze, player, asciival);
+            maze.displayMaze();
+        }
 
-
-
+        maze.displayMaze();
+    }
 
     //========================================
 
-
-    //===========================================
+    //==========================================
 
     // User Solver
 
-
 }
+
+
