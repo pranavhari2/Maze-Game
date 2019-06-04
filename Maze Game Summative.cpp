@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <iostream>
 #include <windows.h>
+#include <ctime>
 #include "Maze.h"
 #include "Being.h"
 #include "Monster.h"
@@ -11,7 +12,7 @@
 using namespace std;
 
 void AutoSolver(Maze, Player, Stack);
-void UserSolver(Maze, Player, int);
+void UserSolver(Maze, Player& , int);
 
 /*  Push all directions to try onto a stack
     After each successful move, reload the stack with every move other than the move which would represent backtracking
@@ -42,18 +43,21 @@ void AutoSolver(Maze maze, Player player, Stack stak)
     return;
 }
 
-void UserSolver(Maze maze, Player player, int asciival)
+void UserSolver(Maze* maze, Player &player, int asciival)
 {
         // Move Left
         if (asciival == 97)
         {
-            int val = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()-1);
+            int val = maze->getParticularMazeLocation(player.getyLocation(), player.getxLocation()-1);
 
             if (val == 0)
             {
-                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
+                cout << player.getxLocation();
                 player.setxLocation(player.getxLocation()-1);
-                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+                cout << player.getxLocation();
+                //maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+                maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
             else
@@ -65,13 +69,15 @@ void UserSolver(Maze maze, Player player, int asciival)
         // Move Right
         else if (asciival == 100)
         {
-            int val = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);
+            int val = maze->getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);
 
             if (val == 0)
             {
-                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
+                cout << player.getxLocation();
                 player.setxLocation(player.getxLocation()+1);
-                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+                cout << player.getxLocation();
+                maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
             else
@@ -83,13 +89,15 @@ void UserSolver(Maze maze, Player player, int asciival)
         else if (asciival == 119)
         {
             // Move Up
-            int val = maze.getParticularMazeLocation(player.getyLocation()-1, player.getxLocation());
+            int val = maze->getParticularMazeLocation(player.getyLocation()-1, player.getxLocation());
 
             if (val == 0)
             {
-                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
+                cout << player.getyLocation();
                 player.setyLocation(player.getyLocation()-1);
-                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+                cout << player.getyLocation();
+                maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
             else
@@ -101,13 +109,15 @@ void UserSolver(Maze maze, Player player, int asciival)
         // Move Down
         else if (asciival == 115)
         {
-           int val = maze.getParticularMazeLocation(player.getyLocation()+1, player.getxLocation());
+           int val = maze->getParticularMazeLocation(player.getyLocation()+1, player.getxLocation());
 
             if (val == 0)
             {
-                maze.maze[player.getyLocation()][player.getxLocation()] = blnk;
+                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
+                cout << player.getyLocation() << endl;
                 player.setyLocation(player.getyLocation()+1);
-                maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
+                cout << player.getyLocation();
+                maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
             else
@@ -116,40 +126,44 @@ void UserSolver(Maze maze, Player player, int asciival)
             }
         }
 
+        maze->displayMaze();
 
         return;
-
 }
 
 
 
 int main()
 {
-    Maze maze;
+    Maze* maze = new Maze;
     Stack stak;
     char key;
     int asciival;
+    srand(time(NULL));
+
 
     Player player("Pranav", 100, 100);
     Monster monster("Monstah", 100, 100);
 
-    maze.setPlayerLocation(1,1);                // Sets the player to the location in the maze
-    maze.setExit(13,13);
-    maze.setMonsterLocation(4,4);
+    maze->setPlayerLocation(1,1);                // Sets the player to the location in the maze
+    maze->setExit(13,13);
+    maze->setMonsterLocation(4,4);
 
     player.setxLocation(1);
     player.setyLocation(1);
 
     while(1)
     {
-        if (key = getch())
+        key = getch();
+        asciival = key;
+        int val = maze->getParticularMazeLocation(monster.getyLocation()+rand()%14-4, monster.getxLocation()+rand()%14-4);
+        if (val == 0)
         {
-            asciival = key;
-            UserSolver(maze, player, asciival);
-            maze.displayMaze();
+            maze->setMonsterLocation(monster.getxLocation(), monster.getyLocation())
         }
 
-        maze.displayMaze();
+        UserSolver(maze, player, asciival);
+
     }
 
     //========================================
@@ -159,5 +173,6 @@ int main()
     // User Solver
 
 }
+
 
 
