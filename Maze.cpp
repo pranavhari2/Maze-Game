@@ -29,10 +29,10 @@ Maze::~Maze()
 void Maze::displayMaze()
 {
     cout <<  "                                      " << endl;
-    for (int i = 0; i<15; i++)
+    for (int i = 0; i<17; i++)
         {
             cout <<  "                                      ";
-            for (int j = 0; j<15; j++)
+            for (int j = 0; j<17; j++)
             {
 
                 cout << maze[i][j] << "";
@@ -41,9 +41,6 @@ void Maze::displayMaze()
         cout << endl;
 
         }
-
-        Sleep(50);
-        system("CLS");
 
     return;
 
@@ -79,13 +76,13 @@ int Maze::getExitY()
     return exitY;
 }
 
-void Maze::setPlayerLocation(int &_x, int &_y)
+void Maze::setPlayerLocation(int _x, int _y)
 {
     maze[_y][_x] = 'P';
     return;
 }
 
-void Maze::setMonsterLocation(int &_x, int &_y)
+void Maze::setMonsterLocation(int _x, int _y)
 {
     maze[_y][_x] = 'M';
     return;
@@ -96,3 +93,4 @@ void Maze::setExit(int _exitX, int _exitY)
     maze[_exitX][_exitY] = 'E';
     return;
 }
+
