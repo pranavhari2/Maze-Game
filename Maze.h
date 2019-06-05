@@ -50,8 +50,8 @@ class Maze
         int getExitX();
         int getSpawnY();
         int getExitY();
-        void setPlayerLocation(int&, int&);
-        void setMonsterLocation(int&, int&);
+        void setPlayerLocation(int, int);
+        void setMonsterLocation(int, int);
         void setExit(int, int);
 
 
