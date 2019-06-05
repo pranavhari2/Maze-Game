@@ -1,4 +1,3 @@
-
 #include <conio.h>
 #include <iostream>
 #include <windows.h>
@@ -53,9 +52,7 @@ void UserSolver(Maze* maze, Player &player, int asciival)
             if (val == 0)
             {
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                cout << player.getxLocation();
                 player.setxLocation(player.getxLocation()-1);
-                cout << player.getxLocation();
                 //maze.setPlayerLocation(player.getxLocation(), player.getyLocation());
                 maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
@@ -74,9 +71,7 @@ void UserSolver(Maze* maze, Player &player, int asciival)
             if (val == 0)
             {
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                cout << player.getxLocation();
                 player.setxLocation(player.getxLocation()+1);
-                cout << player.getxLocation();
                 maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
@@ -94,9 +89,7 @@ void UserSolver(Maze* maze, Player &player, int asciival)
             if (val == 0)
             {
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                cout << player.getyLocation();
                 player.setyLocation(player.getyLocation()-1);
-                cout << player.getyLocation();
                 maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
@@ -114,9 +107,7 @@ void UserSolver(Maze* maze, Player &player, int asciival)
             if (val == 0)
             {
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                cout << player.getyLocation() << endl;
                 player.setyLocation(player.getyLocation()+1);
-                cout << player.getyLocation();
                 maze->maze[player.getyLocation()][player.getxLocation()] = 'P';
             }
 
@@ -125,9 +116,6 @@ void UserSolver(Maze* maze, Player &player, int asciival)
                 cout << "Invalid Move. " << endl;
             }
         }
-
-        maze->displayMaze();
-
         return;
 }
 
@@ -147,22 +135,28 @@ int main()
 
     maze->setPlayerLocation(1,1);                // Sets the player to the location in the maze
     maze->setExit(13,13);
-    maze->setMonsterLocation(4,4);
+   // maze->setMonsterLocation(4,4);
 
     player.setxLocation(1);
     player.setyLocation(1);
 
     while(1)
     {
+        maze->displayMaze();
         key = getch();
         asciival = key;
+        /*
         int val = maze->getParticularMazeLocation(monster.getyLocation()+rand()%14-4, monster.getxLocation()+rand()%14-4);
         if (val == 0)
         {
-            maze->setMonsterLocation(monster.getxLocation(), monster.getyLocation())
+            maze->setMonsterLocation(monster.getxLocation(), monster.getyLocation());
         }
+        */
 
         UserSolver(maze, player, asciival);
+
+        system("CLS");
+
 
     }
 
@@ -173,6 +167,3 @@ int main()
     // User Solver
 
 }
-
-
-
