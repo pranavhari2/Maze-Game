@@ -14,7 +14,7 @@ class Stack
         Link* pop();
         void push(string);
         void peek(string);
-        void reloadStack(string, string, string, string);
+        void reloadStack(string,string,string,string);
         Link* getTop();
         Link* getBase();
         int getSize();

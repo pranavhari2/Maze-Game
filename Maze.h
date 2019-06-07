@@ -2,6 +2,8 @@
 #define MAZE_H
 #include <iostream>
 #include <string>
+#include "Player.h"
+#include "Monster.h"
 using namespace std;
 
 char const blnk = ' ';
@@ -23,23 +25,23 @@ class Maze
 
     public:
         char maze[17][17] =
-
-    {       {whit,  whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit}, //1    //
-            {whit2, blnk, whit, whit, whit, whit, whit, whit, whit, whit, blnk, blnk, blnk, blnk, blnk, whit2, whit2}, //2//
-            {whit2, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, whit, whit, whit, blnk, whit2, whit2}, //3//
-            {whit2, whit, whit, blnk, whit2, blnk, whit, whit, whit, whit, blnk, whit, blnk, blnk, blnk, blnk, whit2}, //4//
-            {whit2, whit, whit, blnk, blnk, blnk, whit, blnk, blnk, blnk, blnk, whit, blnk, blnk, blnk, blnk, whit2}, //5//
-            {whit2, whit3, whit, blnk, blnk, blnk, whit, blnk, blnk, blnk, blnk, whit, blnk, whit, whit, blnk, whit2}, //6//
-            {whit2, whit, whit, whit, whit, blnk, whit, blnk, whit, blnk, blnk, whit, blnk, whit, whit, whit, whit2}, //7//
-            {whit2, whit2, blnk, blnk, blnk, blnk, whit, blnk, whit, whit, blnk, whit, blnk, blnk, blnk, whit, whit2}, //8
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2}, //9
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2}, //10
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2}, //11
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},  //12
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},  //13
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},  //14
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},
+            //1      //2    //3  4    5      6      7    8     9     10    11    12    13    14    15    16    17
+     {      {whit,  whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit}, //1    //
+            {whit2, blnk, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, blnk, blnk, blnk, blnk, 'C', whit2, whit2}, //2//
+            {whit2, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, whit2, whit2, whit2, blnk, whit2, whit2}, //3//
+            {whit2, whit2, whit2, blnk, whit2, blnk, whit2, whit2, whit2, whit2, blnk, whit2, blnk, blnk, blnk, blnk, whit2}, //4//
+            {whit2, whit2, whit2, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, whit2, blnk, blnk, blnk, 'K', whit2}, //5//
+            {whit2, whit2, whit2, whit2, whit2, blnk, blnk, blnk, whit, blnk, blnk, whit2, blnk, whit2, whit2, whit2, whit2}, //6//, //7//
+            {whit2, whit2, blnk, blnk, blnk, blnk, whit2, blnk, whit2, whit2, 'C', whit2, blnk, blnk, blnk, whit2, whit2}, //8
+            {whit2, whit2, blnk, whit2, whit2, whit2, whit2, blnk, whit2, whit2, whit2, whit2, whit2, whit2, blnk, whit2, whit2}, //9
+            {whit2, whit2, blnk, blnk, blnk, blnk, whit2, blnk, blnk, blnk, whit2, whit2, whit2, whit2, blnk, blnk, whit2}, //10
+            {whit2, whit2, whit2, blnk, whit2, blnk, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, blnk, whit2}, //11
+            {whit2, whit2, whit2, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},  //12
+            {whit2, whit2, blnk, blnk, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, blnk, whit2},  //13
+            {whit2, blnk, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, 'D', blnk},  //14
+            {whit2, blnk, whit2, blnk, blnk, whit2, blnk, whit2, whit2, blnk, whit2, whit2, whit2, whit2, whit2, blnk, whit2},
+            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, whit2, whit2, blnk, whit2, whit2, blnk, blnk, blnk, blnk, whit2},
+            {whit2, whit2, whit2, whit2, whit2, blnk, 'K', whit2, whit2, whit2, whit2, whit2, whit2, blnk, whit2, whit2, whit2},
             {whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3, whit3},  //15
     };
 
@@ -51,9 +53,10 @@ class Maze
         int getExitX();
         int getSpawnY();
         int getExitY();
-        void setPlayerLocation(int, int);
-        void setMonsterLocation(int, int);
+        void setPlayerLocation(Player&, int, int);
+        void setMonsterLocation(Monster&, int, int);
         void setExit(int, int);
+        void DetectCollision(Player&, Monster&);
 
 
 

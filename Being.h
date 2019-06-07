@@ -1,6 +1,5 @@
 #ifndef BEING_H
 #define BEING_H
-#include "Maze.h"
 #include <iostream>
 using namespace std;
 
@@ -16,7 +15,7 @@ class Being
         int Gethealth();
         void Sethealth(int _health);
         string Getinventory();
-        void Setinventory();
+        void Setinventory(string);
         int Getstrength();
         void Setstrength(int _strength);
         void displayBeing();

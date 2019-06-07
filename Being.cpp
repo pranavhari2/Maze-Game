@@ -41,6 +41,11 @@ string Being::Getinventory()
     }
 }
 
+void Being::Setinventory(string wpn)
+{
+
+}
+
 int Being::getxLocation()
 {
     return xLocation;

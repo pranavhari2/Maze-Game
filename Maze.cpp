@@ -48,14 +48,38 @@ void Maze::displayMaze()
 
 int Maze::getParticularMazeLocation(int yval, int xval)
 {
-    if (maze[yval][xval] == blnk)
+    if (maze[yval][xval] == blnk )
     {
         return 0;
     }
 
+    else if (maze[yval][xval] == 'C')
+    {
+        cout << "CHEST" << endl;
+        return 1;
+    }
+
+    else if (maze[yval][xval] == 'K')
+    {
+        cout << "KEY" << endl;
+        return 2;
+    }
+
+    else if (maze[yval][xval] == 'M')
+    {
+        cout << "MONSTER." << endl;
+        return 3;
+    }
+
+    else if (maze[yval][xval] == 'D')
+    {
+        cout <<  "DOOR." << endl;
+        return 4;
+    }
+
     else
     {
-        return 1;
+        return 5;
     }
 }
 
@@ -76,14 +100,18 @@ int Maze::getExitY()
     return exitY;
 }
 
-void Maze::setPlayerLocation(int _x, int _y)
+void Maze::setPlayerLocation(Player &player, int _x, int _y)
 {
+    player.setxLocation(_x);
+    player.setyLocation(_y);
     maze[_y][_x] = 'P';
     return;
 }
 
-void Maze::setMonsterLocation(int _x, int _y)
+void Maze::setMonsterLocation(Monster &monster, int _x, int _y)
 {
+    monster.setxLocation(_x);
+    monster.setyLocation(_y);
     maze[_y][_x] = 'M';
     return;
 }
@@ -93,4 +121,16 @@ void Maze::setExit(int _exitX, int _exitY)
     maze[_exitX][_exitY] = 'E';
     return;
 }
+
+//void DetectCollision(Player &player, Monster &monster)
+//{
+    //if (
+
+
+
+
+
+
+
+
 
