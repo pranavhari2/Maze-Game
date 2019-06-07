@@ -71,15 +71,9 @@ int Maze::getParticularMazeLocation(int yval, int xval)
         return 3;
     }
 
-    else if (maze[yval][xval] == 'D')
-    {
-        cout <<  "DOOR." << endl;
-        return 4;
-    }
-
     else
     {
-        return 5;
+        return 4;
     }
 }
 

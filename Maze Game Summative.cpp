@@ -14,8 +14,6 @@ void AutoSolver(Maze, Player, Stack);
 void UserSolver(Maze, Player& , int);
 void Combat();
 
-
-
 /*  Push all directions to try onto a stack
     After each successful move, reload the stack with every move other than the move which would represent backtracking
     BUT we should push the backtracking move onto the stack first  */
@@ -64,15 +62,9 @@ void UserSolver(Maze* maze, Player &player, int asciival)
 
             else if (val == 2)
             {
-
-
+                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
+                maze->setPlayerLocation(player, player.getxLocation()-1, player.getyLocation());
             }
-
-            else if (val == 3)
-            {
-            }
-
-
         }
 
         // Move Right
@@ -97,8 +89,6 @@ void UserSolver(Maze* maze, Player &player, int asciival)
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
                 maze->setPlayerLocation(player, player.getxLocation()+1, player.getyLocation());
             }
-
-
         }
 
         else if (asciival == 119)
@@ -150,7 +140,6 @@ void UserSolver(Maze* maze, Player &player, int asciival)
         }
         return;
 }
-
 
 
 
