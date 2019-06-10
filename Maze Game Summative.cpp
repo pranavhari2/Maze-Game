@@ -10,9 +10,45 @@
 #include "Stack.h"
 using namespace std;
 
+void GameMenu();
 void AutoSolver(Maze, Player, Stack);
 void UserSolver(Maze, Player& , int);
-void Combat();
+
+
+void GameMenu()
+{
+    system("CLS");
+
+    cout << " ___    ___     ___     _____     _____         ___ ___    ______    ___  ___    _____" << endl;
+    cout << "|   \  /   |   /   \        /     |             |  |/  |    |  |    |   \ | |   |     |" << endl;
+    cout << "|    \/    |  /  _  \      /      |____         |     /     |  |    |    \| |   |     ___" << endl;
+    cout << "| |\    /| | /  | |  \    /       |             |  _   \    |  |    |   _   |   |     | |" << endl;
+    cout << "|_| \__/ |_|/_________\  /_____   |_____        |_| |___\  _|__|_   |__| |__|   |_______|" << endl;
+
+    Sleep(500);
+
+    cout << endl;
+    cout << endl;
+    cout << "Loading Game";
+    cout << ".";
+    Sleep(400);
+    cout << ".";
+    Sleep(400);
+    cout << ".";
+    Sleep(400);
+    cout << ".";
+    system("CLS");
+
+
+
+
+
+}
+
+void Combat()
+{
+    cout << "FIGHT THE MONSTER AND KILL IT" << endl;
+}
 
 /*  Push all directions to try onto a stack
     After each successful move, reload the stack with every move other than the move which would represent backtracking
@@ -65,6 +101,11 @@ void UserSolver(Maze* maze, Player &player, int asciival)
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
                 maze->setPlayerLocation(player, player.getxLocation()-1, player.getyLocation());
             }
+
+            else if (val == 3 )
+            {
+                return;
+            }
         }
 
         // Move Right
@@ -80,6 +121,34 @@ void UserSolver(Maze* maze, Player &player, int asciival)
 
             else if (val == 1)
             {
+                system("CLS");
+                cout << "      --------------------------  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |           (.)          |    " << endl;
+                cout << "      --------------------------  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      --------------------------  " << endl;
+
+                Sleep(500);
+                system("CLS");
+
+                cout << "      --------------------------  " << endl;
+                cout << "      |           (.)          |    " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      --------------------------  " << endl;
+                cout << "      |                        |    " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      --------------------------  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      |                        |  " << endl;
+                cout << "      ..........................  " << endl;
+
+
                 maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
                 maze->setPlayerLocation(player, player.getxLocation()+1, player.getyLocation());
             }
@@ -151,6 +220,8 @@ int main()
     int asciival;
     srand(time(NULL));
 
+    GameMenu();
+
 
     Player player("Pranav", 100, 100);
     Monster monster("Monstah", 100, 100);
@@ -160,6 +231,8 @@ int main()
 
     player.setxLocation(1);
     player.setyLocation(1);
+
+
 
     while(1)
     {
