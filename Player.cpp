@@ -1,11 +1,13 @@
 #include <iostream>
-#include "Being.h"
-#include "Maze.h"
 #include "Player.h"
+#include "Being.h"
+#include "Stack.h"
+
 
 Player::Player(string _name, int _health, int _strength):Being::Being( _name, _health, _strength)
 {
-
+    xLocation = 1;
+    yLocation = 1;
 }
 
 Player::~Player()
@@ -13,6 +15,9 @@ Player::~Player()
     //dtor
 }
 
-//void Player::grabKey()
-//{
+void AutoMove(int right, int left, int up, int down)
+{
+
+}
+
 

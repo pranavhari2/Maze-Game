@@ -4,13 +4,13 @@
 
 using namespace std;
 
+
 class Player : public Being
 {
     public:
         Player(string, int, int);
         virtual ~Player();
-        void grabKey();
-
+        void AutoMove(int,int,int,int);
     protected:
 
     private:

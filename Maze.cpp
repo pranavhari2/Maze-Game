@@ -55,19 +55,16 @@ int Maze::getParticularMazeLocation(int yval, int xval)
 
     else if (maze[yval][xval] == 'C')
     {
-        cout << "CHEST" << endl;
         return 1;
     }
 
     else if (maze[yval][xval] == 'K')
     {
-        cout << "KEY" << endl;
         return 2;
     }
 
     else if (maze[yval][xval] == 'M')
     {
-        cout << "MONSTER." << endl;
         return 3;
     }
 

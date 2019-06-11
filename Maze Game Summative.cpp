@@ -11,8 +11,8 @@
 using namespace std;
 
 void GameMenu();
-void AutoSolver(Maze, Player, Stack);
-void UserSolver(Maze, Player& , int);
+void AutoSolver(Maze, Player, Stack*);
+void UserSolver(Maze*, Player& , int);
 
 
 void GameMenu()
@@ -47,16 +47,21 @@ void GameMenu()
 
 void Combat()
 {
-    cout << "FIGHT THE MONSTER AND KILL IT" << endl;
+    system("CLS");
+    cout << "FIGHT AND KILL THE MONSTER" << endl;
+
+
+
+
 }
 
 /*  Push all directions to try onto a stack
     After each successful move, reload the stack with every move other than the move which would represent backtracking
     BUT we should push the backtracking move onto the stack first  */
 
-void AutoSolver(Maze maze, Player player, Stack stak)
+/*void AutoSolver(Maze* maze, Player &player, Stack* stak)
 {
-    int right = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);
+    int right = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);           // Checks every location near the player one by one
     int left = maze.getParticularMazeLocation(player.getyLocation(), player.getxLocation()-1);
     int down = maze.getParticularMazeLocation(player.getyLocation()+1, player.getxLocation());
     int up  = maze.getParticularMazeLocation(player.getyLocation()-1, player.getxLocation());
@@ -64,152 +69,10 @@ void AutoSolver(Maze maze, Player player, Stack stak)
     stak.reloadStack("L","D","U","R");
     Link* move = stak.pop();
 
-    if (right == 0)
-    {
-        player.setxLocation(player.getxLocation()+1);
-        maze.maze[player.getyLocation(), player.getxLocation()];
-    }
+    player.AutoMove(right, left, up, down);
 
-    string dir = move->getContents();
-
-    cout << "DIRECTION: " << dir << endl;
-
-    return;
 }
-
-void UserSolver(Maze* maze, Player &player, int asciival)
-{
-        // Move Left
-        if (asciival == 97)
-        {
-            int val = maze->getParticularMazeLocation(player.getyLocation(), player.getxLocation()-1);
-
-            if (val == 0)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation()-1, player.getyLocation());
-            }
-
-            else if (val == 1)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation()-1, player.getyLocation());
-            }
-
-            else if (val == 2)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation()-1, player.getyLocation());
-            }
-
-            else if (val == 3 )
-            {
-                return;
-            }
-        }
-
-        // Move Right
-        else if (asciival == 100)
-        {
-            int val = maze->getParticularMazeLocation(player.getyLocation(), player.getxLocation()+1);
-
-            if (val == 0)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation()+1, player.getyLocation());
-            }
-
-            else if (val == 1)
-            {
-                system("CLS");
-                cout << "      --------------------------  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |           (.)          |    " << endl;
-                cout << "      --------------------------  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      --------------------------  " << endl;
-
-                Sleep(500);
-                system("CLS");
-
-                cout << "      --------------------------  " << endl;
-                cout << "      |           (.)          |    " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      --------------------------  " << endl;
-                cout << "      |                        |    " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      --------------------------  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      |                        |  " << endl;
-                cout << "      ..........................  " << endl;
-
-
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation()+1, player.getyLocation());
-            }
-
-            else if (val == 2)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation()+1, player.getyLocation());
-            }
-        }
-
-        else if (asciival == 119)
-        {
-            // Move Up
-            int val = maze->getParticularMazeLocation(player.getyLocation()-1, player.getxLocation());
-
-            if (val == 0)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation(), player.getyLocation()-1);
-            }
-
-            else if (val == 1)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation(), player.getyLocation()-1);
-            }
-
-            else if (val == 2)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation(), player.getyLocation()-1);
-            }
-        }
-
-        // Move Down
-        else if (asciival == 115)
-        {
-           int val = maze->getParticularMazeLocation(player.getyLocation()+1, player.getxLocation());
-
-            if (val == 0)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation(), player.getyLocation()+1);
-            }
-
-            else if (val == 1)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation(), player.getyLocation()+1);
-            }
-
-            else if (val == 2)
-            {
-                maze->maze[player.getyLocation()][player.getxLocation()] = blnk;
-                maze->setPlayerLocation(player, player.getxLocation(), player.getyLocation()+1);
-            }
-        }
-        return;
-}
-
+*/
 
 
 int main()
@@ -240,7 +103,7 @@ int main()
         key = getch();
         asciival = key;
 
-        UserSolver(maze, player, asciival);
+//        UserSolver(maze, player, asciival);
 
         system("CLS");
     }
