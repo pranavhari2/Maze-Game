@@ -1,6 +1,7 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 #include "Being.h"
+#include <iostream>
 
 
 class Monster : public Being
@@ -8,7 +9,6 @@ class Monster : public Being
     public:
         Monster(string, int, int);
         virtual ~Monster();
-
 
     protected:
 
