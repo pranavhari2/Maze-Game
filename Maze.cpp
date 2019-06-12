@@ -94,7 +94,7 @@ int Maze::getExitY()
     return exitY;
 }
 
-void Maze::setPlayerLocation(Player* player, int _x, int _y)
+void Maze::setPlayerLocation(Player* player, int _x, int _y)   // Sets Player's Location on the maze
 {
     player->setxLocation(_x);
     player->setyLocation(_y);
@@ -102,7 +102,7 @@ void Maze::setPlayerLocation(Player* player, int _x, int _y)
     return;
 }
 
-void Maze::setMonsterLocation(Monster* monster, int _x, int _y)   // Sets Monster's Location on maze
+void Maze::setMonsterLocation(Monster* monster, int _x, int _y)   // Sets Monster's Location on the maze
 {
     monster->setxLocation(_x);
     monster->setyLocation(_y);
@@ -115,7 +115,3 @@ void Maze::setExit(int _exitX, int _exitY)
     maze[_exitX][_exitY] = 'E';
     return;
 }
-
-//void DetectCollision(Player &player, Monster &monster)
-//{
-    //if (

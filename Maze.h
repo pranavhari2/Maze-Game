@@ -31,15 +31,15 @@ class Maze
             {whit2, blnk, whit2, blnk, whit2, blnk, whit2, whit2, whit2, whit2, blnk, whit2, blnk, blnk, whit2, blnk, whit2}, //4//
             {whit2, blnk, whit2, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, 'K', whit2}, //5//
             {whit2, blnk, whit2, whit2, blnk, whit2, blnk, blnk, whit, blnk, blnk, whit2, blnk, whit2, whit2, whit2, whit2}, //6//, //7//
-            {whit2, blnk, blnk, blnk, blnk, blnk, whit2, blnk, whit2, whit2, 'C', whit2, blnk, blnk, blnk, whit2, whit2}, //8
-            {whit2, whit2, blnk, blnk, whit2, whit2, whit2, blnk, blnk, whit2, whit2, whit2, whit2, whit2, blnk, whit2, whit2}, //9
+            {whit2, blnk, blnk, blnk, blnk, blnk, whit2, blnk, whit2, whit2, 'C', whit2, blnk, blnk, blnk, blnk, whit2}, //8
+            {whit2, whit2, blnk, blnk, whit2, whit2, whit2, blnk, blnk, whit2, whit2, whit2, whit2, whit2, blnk, blnk, whit2}, //9
             {whit2, blnk, blnk, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, blnk, whit2, whit2, blnk, blnk, whit2}, //10
-            {whit2, blnk, whit2, blnk, whit2, blnk, whit2, whit2, whit2, whit2, blnk, whit2, blnk, whit2, whit2, blnk, whit2}, //11
-            {whit2, blnk, whit2, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, 'K', blnk, blnk, whit2, whit2, whit2},  //12
+            {whit2, blnk, whit2, blnk, whit2, blnk, whit2, whit2, whit2, whit2, blnk, whit2, blnk, whit2, blnk, blnk, whit2}, //11
+            {whit2, blnk, whit2, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, 'K', blnk, blnk, whit2, blnk, whit2},  //12
             {whit2, whit2, whit2, blnk, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, blnk, whit2, whit2, blnk, whit2},  //13
             {whit2, blnk, blnk, blnk, blnk, whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},  //14
             {whit2, blnk, whit2, blnk, blnk, whit2, blnk, whit2, whit2, blnk, whit2, whit2, whit2, whit2, whit2, whit2, whit2},
-            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, whit2, whit2, blnk, blnk, blnk, blnk, blnk, blnk, blnk, whit2},
+            {whit2, blnk, blnk, blnk, blnk, blnk, blnk, whit2, whit2, blnk, blnk, blnk, blnk, blnk, blnk, whit2, whit2},
             {whit2, whit2, whit2, whit2, whit2, blnk, whit2, whit2, whit2, blnk, blnk, whit2, whit2, blnk, blnk, blnk, blnk},
             {whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2, whit2},  //15
     };

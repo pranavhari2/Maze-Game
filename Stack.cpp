@@ -54,6 +54,7 @@ void Stack::displayStack()
     if (temp == NULL)
     {
         cout << "The stack is empty";
+        return;
     }
     else
     {
@@ -71,7 +72,6 @@ void Stack::displayStack()
 
 void Stack::push(string direction)
 {
-    Link* _top = top;
 
     size+1;
 
@@ -81,13 +81,13 @@ void Stack::push(string direction)
     if (size == 1)
     {
         base = newlink;
-        newlink->setNext(_top);
-        _top = newlink;
+        newlink->setNext(top);
+        top = newlink;
     }
     else
     {
-        newlink->setNext(_top);
-        _top = newlink;
+        newlink->setNext(top);
+        top = newlink;
     }
 
     return;
@@ -95,9 +95,7 @@ void Stack::push(string direction)
 
 Link* Stack::pop()
 {
-    Link* _top = top;
-
-   if (_top == NULL)
+   if (top == NULL)
    {
        cout << "Stack is empty" << endl;
        return NULL;
@@ -105,15 +103,18 @@ Link* Stack::pop()
    else
    {
        size--;
-       Link* temp = _top;
-       cout << _top->getContents() << " was removed" << endl;
-       _top = _top->getNext();
-       return temp;
+       Link* temp = new Link;
+       Link* oldTop = new Link;
+
+       temp = top;
+       oldTop = temp;
+       top = temp->getNext();
+       return oldTop;
    }
 
 }
 
-void Stack::peek(string _contents)
+string Stack::peek(string _contents)
 {
     Link* temp = new Link;
     temp = top;
@@ -122,8 +123,9 @@ void Stack::peek(string _contents)
         if (temp->getContents() == _contents)
         {
             cout << _contents << " has been found." << endl;
-            return;
+            return _contents;
         }
+
         temp = temp->getNext();
     }
 
