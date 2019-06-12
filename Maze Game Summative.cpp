@@ -11,7 +11,7 @@
 using namespace std;
 
 void GameMenu();
-void AutoSolver(Maze*, Player*, Stack*);
+void AutoSolver(Maze*, Player*, Monster*, Monster*, Monster*, Stack*);
 void UserSolver(Maze*, Player* , int);
 
 
@@ -22,7 +22,7 @@ void GameMenu()
     system("CLS");
 
     cout << " ___     ___      ___     _____     _____          ___ ___   ______   ___  ___    _____    " << endl;
-    cout << " |  \\  /    |    /   \\        /     |             |  |/  |    |  |    |   \\ | |   |     |   " << endl;
+    cout << " |  \\  /    |    /   \\        /     |             |  |/  |    |  |    |   \\ | |   |    |   " << endl;
     cout << " |   \\/     |   /  _  \\      /      |____         |     /     |  |    |    \\| |   |     ___ " << endl;
     cout << " | |\\    /| |  /  | |  \\    /       |             |  _   \\    |  |    |   _   |   |     | | " << endl;
     cout << " |_| \\__/ |_| /_________\\  /_____   |_____        |_| |___\\  _|__|_   |__| |__|   |_______| " << endl;
@@ -43,12 +43,11 @@ void GameMenu()
     system("CLS");
 }
 
-
 /*  Push all directions to try onto a stack
     After each successful move, reload the stack with every move other than the move which would represent backtracking
     BUT we should push the backtracking move onto the stack first  */
 
-void AutoSolver(Maze* maze, Player* player, Stack* stak)
+void AutoSolver(Maze* maze, Player* player, Monster* mon1, Monster* mon2, Monster* mon3, Stack* stak)
 {
     int right = maze->getParticularMazeLocation(player->getyLocation(), player->getxLocation()+1);
     int left = maze->getParticularMazeLocation(player->getyLocation(), player->getxLocation()-1);
@@ -56,6 +55,10 @@ void AutoSolver(Maze* maze, Player* player, Stack* stak)
     int up  = maze->getParticularMazeLocation(player->getyLocation()-1, player->getxLocation());
 
     player->Action(maze, player, stak, right, left, down, up);
+    mon1->Move(maze);
+    mon2->Move(maze);
+    mon3->Move(maze);
+
 }
 
 
@@ -205,9 +208,9 @@ int main()
     GameMenu();
 
     Player player("Pranav", 100, 100);                   // Create Monsters and Player
-    Monster monster("Monster1", 100, 50);
-    Monster monster2("Monster2", 100, 30);
-    Monster monster3("Monster3", 100, 70);
+    Monster monster("Monster1", 100, 70);
+    Monster monster2("Monster2", 100, 70);
+    Monster monster3("BOSS", 100, 100);
 
 
     Player* myPlayer = &player;
@@ -216,11 +219,15 @@ int main()
     Monster* mon3 = &monster3;
 
     maze->setPlayerLocation(myPlayer, 1,1);                // Sets the player's starting position
+    maze->setMonsterLocation(mon1, 12, 15);
+    maze->setMonsterLocation(mon2,  6,2);
+    maze->setMonsterLocation(mon3, 2,14);
 
     player.setxLocation(1);
     player.setyLocation(1);
 
-   /* while(myPlayer->getxLocation() != 16)
+
+    while(myPlayer->getxLocation() != 16)
     {
         maze->displayMaze();
         key = getch();
@@ -228,17 +235,18 @@ int main()
         UserSolver(maze, myPlayer, asciival);
         system("CLS");
     }
-    */
 
+
+    stak->push("U");
     stak->push("L");
     stak->push("R");
     stak->push("D");
-    stak->push("U");
+
 
     while(myPlayer->getxLocation() != 16)
     {
         maze->displayMaze();
-        AutoSolver(maze, myPlayer, stak);
+        AutoSolver(maze, myPlayer, mon1, mon2, mon3, stak);
         Sleep(50);
         system("CLS");
     }

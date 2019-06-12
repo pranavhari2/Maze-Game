@@ -93,6 +93,8 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 void Player::Combat()
 {
     cout << "FIGHT THE MONSTER AND KILL IT" << endl;
+
+
 }
 
 
@@ -106,23 +108,12 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
         {
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation+1, yLocation);
-
-            // Push backtracking move onto stack first to avoid looping
-            // Pushing directions in order similar to when first initialized
-            stak->push("L");
-            stak->push("U");
-            stak->push("D");
-            stak->push("R");
         }
 
         else if (right == 1)
         {
             Setinventory("SWORD");
             OpenChest();
-            stak->push("L");
-            stak->push("U");
-            stak->push("D");
-            stak->push("R");
         }
 
         // Combat
@@ -131,10 +122,6 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
             Setinventory("KEY");
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation+1, yLocation);
-            stak->push("L");
-            stak->push("U");
-            stak->push("D");
-            stak->push("R");
         }
 
         else if (right == 3)
@@ -145,7 +132,13 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
         else
         {
             stak->pop();
+            return;
         }
+
+        stak->push("L");
+        stak->push("D");
+        stak->push("R");
+        stak->push("U");
 
         return;
     }
@@ -156,20 +149,12 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
         {
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation-1, yLocation);
-            stak->push("R");
-            stak->push("L");
-            stak->push("U");
-            stak->push("D");
         }
 
         else if (left == 1)
         {
             Setinventory("SWORD");
             OpenChest();
-            stak->push("R");
-            stak->push("L");
-            stak->push("U");
-            stak->push("D");
         }
 
         else if (left == 2)
@@ -177,10 +162,6 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
             Setinventory("KEY");
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation-1, yLocation);
-            stak->push("R");
-            stak->push("L");
-            stak->push("U");
-            stak->push("D");
         }
 
         else if (left == 3)
@@ -188,11 +169,16 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
             Combat();
         }
 
-
         else
         {
             stak->pop();
+            return;
         }
+
+        stak->push("R");
+        stak->push("U");
+        stak->push("L");
+        stak->push("D");
 
         return;
     }
@@ -203,20 +189,13 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
         {
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation, yLocation+1);
-            stak->push("U");
-            stak->push("D");
-            stak->push("R");
-            stak->push("L");
+
         }
 
         else if (down == 1)
         {
             Setinventory("SWORD");
             OpenChest();
-            stak->push("U");
-            stak->push("D");
-            stak->push("R");
-            stak->push("L");
         }
 
         // Combat
@@ -225,10 +204,6 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
             Setinventory("KEY");
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation, yLocation+1);
-            stak->push("U");
-            stak->push("D");
-            stak->push("R");
-            stak->push("L");
         }
 
         else if (down == 3)
@@ -236,11 +211,16 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
             Combat();
         }
 
-
         else
         {
             stak->pop();
+            return;
         }
+
+        stak->push("U");
+        stak->push("R");
+        stak->push("D");
+        stak->push("L");
 
         return;
     }
@@ -251,20 +231,12 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
         {
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation, yLocation-1);
-            stak->push("D");
-            stak->push("U");
-            stak->push("R");
-            stak->push("L");
         }
 
         else if (up == 1)
         {
             Setinventory("SWORD");
             OpenChest();
-            stak->push("D");
-            stak->push("U");
-            stak->push("R");
-            stak->push("L");
         }
         // Combat
         else if (up == 2)
@@ -272,10 +244,6 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
             Setinventory("KEY");
             maze->maze[yLocation][xLocation] = blnk;
             maze->setPlayerLocation(player, xLocation, yLocation-1);
-            stak->push("D");
-            stak->push("U");
-            stak->push("R");
-            stak->push("L");
         }
 
         else if (up == 3)
@@ -286,7 +254,13 @@ void Player::Action(Maze* maze, Player* player, Stack* stak, int right, int left
         else
         {
             stak->pop();
+            return;
         }
+
+        stak->push("D");
+        stak->push("R");
+        stak->push("U");
+        stak->push("L");
 
         return;
     }

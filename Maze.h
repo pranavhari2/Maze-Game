@@ -6,6 +6,8 @@
 #include "Monster.h"
 using namespace std;
 
+class Monster;
+
 char const blnk = ' ';
 char const crn1 = 218;
 char const crn2 = 191;
@@ -23,6 +25,7 @@ class Maze
 {
 
     public:
+        Monster* monster;
         char maze[17][17] =
             //1      //2    //3  4    5      6      7    8     9     10    11    12    13    14    15    16    17
      {      {whit,  whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit, whit}, //1    //
