@@ -14,7 +14,10 @@ class Player : public Being
         Player(string, int, int);
         virtual ~Player();
         void checkKey();
-        void AutoMove(Maze*, Stack*, Player*, int,int,int,int);
+        void Action(Maze*, Player*, Stack*, int,int,int,int);
+        void OpenChest();
+        void Combat();
+        void UserAction();
 
     protected:
 
